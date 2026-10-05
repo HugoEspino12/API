@@ -1,64 +1,74 @@
 {
-"comics":[
-        {
-            "titulo": "Year One",
-            "año": 1987,
-            "paginas": 96,
-            "precio": 14.99
-        },
-        {
-            "titulo": "The Long Halloween",
-            "año": 1996,
-            "paginas": 384,
-            "precio": 24.50
-        },
-        {
-            "titulo": "The Killing Joke",
-            "año": 1988,
-            "paginas": 64,
-            "precio": 12.00
-        },
-        {
-            "titulo": "The Dark Knight Returns",
-            "año": 1986,
-            "paginas": 224,
-            "precio": 19.99
-        },
-        {
-            "titulo": "A Death in the Family",
-            "año": 1988,
-            "paginas": 144,
-            "precio": 16.50
-        },
-        {
-            "titulo": "Knightfall",
-            "año": 1993,
-            "paginas": 624,
-            "precio": 29.99
-        },
-        {
-            "titulo": "Hush",
-            "año": 2002,
-            "paginas": 320,
-            "precio": 22.00
-        },
-        {
-            "titulo": "The Court of Owls",
-            "año": 2011,
-            "paginas": 176,
-            "precio": 15.75
-        },
-        {
-            "titulo": "Under the Red Hood",
-            "año": 2005,
-            "paginas": 272,
-            "precio": 21.50
-        },
-        {
-            "titulo": "Arkham Asylum",
-            "año": 1989,
-            "paginas": 216,
-            "precio": 18.25
-        }
-        ]
+  "comics": [
+    {
+      "id": 1,
+      "titulo": "Year One",
+      "año": 1987,
+      "paginas": 96,
+      "precio": 14.99
+    },
+    {
+      "id": 2,
+      "titulo": "The Long Halloween",
+      "año": 1996,
+      "paginas": 384,
+      "precio": 24.50
+    },
+    {
+      "id": 3,
+      "titulo": "The Killing Joke",
+      "año": 1988,
+      "paginas": 64,
+      "precio": 12.00
+    },
+    {
+      "id": 4,
+      "titulo": "The Dark Knight Returns",
+      "año": 1986,
+      "paginas": 224,
+      "precio": 19.99
+    },
+    {
+      "id": 5,
+      "titulo": "A Death in the Family",
+      "año": 1988,
+      "paginas": 144,
+      "precio": 16.50
+    },
+    {
+      "id": 6,
+      "titulo": "Knightfall",
+      "año": 1993,
+      "paginas": 624,
+      "precio": 29.99
+    },
+    {
+      "id": 7,
+      "titulo": "Hush",
+      "año": 2002,
+      "paginas": 320,
+      "precio": 22.00
+    },
+    {
+      "id": 8,
+      "titulo": "The Court of Owls",
+      "año": 2011,
+      "paginas": 176,
+      "precio": 15.75
+    },
+    {
+      "id": 9,
+      "titulo": "Under the Red Hood",
+      "año": 2005,
+      "paginas": 272,
+      "precio": 21.50
+    },
+    {
+      "id": 10,
+      "titulo": "Arkham Asylum",
+      "año": 1989,
+      "paginas": 216,
+      "precio": 18.25
+    }
+  ]
 }

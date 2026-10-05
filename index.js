@@ -2,8 +2,6 @@ import express from 'express';
 import fs from "fs";
 
 const app = express();
-
-// Render te asigna un puerto mediante process.env.PORT
 const PORT = process.env.PORT || 3000;
 
 const readData = () => {
@@ -15,23 +13,25 @@ const readData = () => {
     }
 };
 
-const writeData = (data) => {
-    try {
-        fs.writeFileSync("./db.json", JSON.stringify(data));
-    } catch (error) {
-        console.log(error);
-    }
-};
-
 app.get("/", (req, res) => {
     res.send("Bienvenido a mi primer api con Node JS !!");
 });
 
-app.get("/pacientes/:id", (req, res) => {
+// Endpoint para obtener TODOS los cómics
+app.get("/comics", (req, res) => {
+    const data = readData();
+    res.json(data.comics);
+});
+
+// Endpoint para obtener un cómic por su ID
+app.get("/comics/:id", (req, res) => {
     const data = readData();
     const id = parseInt(req.params.id);
-    const paciente = data.pacientes.find((paciente) => paciente.id === id);
-    res.json(paciente);
+    const comic = data.comics.find((comic) => comic.id === id);
+    if (!comic) {
+        return res.status(404).json({ error: "Cómic no encontrado" });
+    }
+    res.json(comic);
 });
 
 app.listen(PORT, () => {
