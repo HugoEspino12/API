@@ -1,8 +1,15 @@
 import express from 'express';
 import fs from "fs";
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Permite peticiones desde el navegador (Go Live)
+app.use(cors());
+
+// Servir la carpeta "img" como archivos estáticos
+app.use('/img', express.static('img'));
 
 const readData = () => {
     try {

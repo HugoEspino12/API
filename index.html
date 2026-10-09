@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Cómics</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #121214;
+      color: #e1e1e6;
+      padding: 30px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #f75a68;
+    }
+
+    /* Cuadrícula responsiva */
+    .grid-comics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Tarjeta individual */
+    .comic-card {
+      background-color: #202024;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .comic-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .comic-card img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      background-color: #29292e;
+    }
+
+    .comic-info {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .comic-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .comic-meta {
+      font-size: 0.85rem;
+      color: #a8a8b3;
+      margin-bottom: 12px;
+    }
+
+    .comic-price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #04d361;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Catálogo de Cómics</h1>
+
+  <section class="grid-comics" id="grid-comics"></section>
+
+  <script>
+    const API_URL = 'http://localhost:3000';
+
+    fetch(`${API_URL}/comics`)
+      .then(response => {
+        if (!response.ok) throw new Error("Error en la petición");
+        return response.json();
+      })
+      .then(comics => {
+        const contenedor = document.getElementById('grid-comics');
+        contenedor.innerHTML = comics.map(comic => `
+          <article class="comic-card">
+            <img src="${API_URL}${comic.imagen}" alt="${comic.titulo}" onerror="this.src='https://via.placeholder.com/220x310?text=Sin+Portada'">
+            <div class="comic-info">
+              <div>
+                <h2 class="comic-title">${comic.titulo}</h2>
+                <p class="comic-meta">Año: ${comic.año} | ${comic.paginas} págs.</p>
+              </div>
+              <span class="comic-price">$${comic.precio.toFixed(2)}</span>
+            </div>
+          </article>
+        `).join('');
+      })
+      .catch(error => {
+        console.error("Hubo un error cargando los cómics:", error);
+      });
+  </script>
+</body>
+</html>
