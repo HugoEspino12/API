@@ -91,31 +91,29 @@
   <section class="grid-comics" id="grid-comics"></section>
 
   <script>
-    const API_URL = 'http://localhost:3000';
-
-    fetch(`${API_URL}/comics`)
-      .then(response => {
-        if (!response.ok) throw new Error("Error en la petición");
-        return response.json();
-      })
-      .then(comics => {
-        const contenedor = document.getElementById('grid-comics');
-        contenedor.innerHTML = comics.map(comic => `
-          <article class="comic-card">
-            <img src="${API_URL}${comic.imagen}" alt="${comic.titulo}" onerror="this.src='https://via.placeholder.com/220x310?text=Sin+Portada'">
-            <div class="comic-info">
-              <div>
-                <h2 class="comic-title">${comic.titulo}</h2>
-                <p class="comic-meta">Año: ${comic.año} | ${comic.paginas} págs.</p>
-              </div>
-              <span class="comic-price">$${comic.precio.toFixed(2)}</span>
-            </div>
-          </article>
-        `).join('');
-      })
-      .catch(error => {
-        console.error("Hubo un error cargando los cómics:", error);
-      });
+    fetch('/comics')
+  .then(response => {
+    if (!response.ok) throw new Error("Error en la petición");
+    return response.json();
+  })
+  .then(comics => {
+    const contenedor = document.getElementById('grid-comics');
+    contenedor.innerHTML = comics.map(comic => `
+      <article class="comic-card">
+        <img src="${comic.imagen}" alt="${comic.titulo}" onerror="this.src='https://via.placeholder.com/220x310?text=Sin+Portada'">
+        <div class="comic-info">
+          <div>
+            <h2 class="comic-title">${comic.titulo}</h2>
+            <p class="comic-meta">Año: ${comic.año} | ${comic.paginas} págs.</p>
+          </div>
+          <span class="comic-price">$${comic.precio.toFixed(2)}</span>
+        </div>
+      </article>
+    `).join('');
+  })
+  .catch(error => {
+    console.error("Hubo un error cargando los cómics:", error);
+  });
   </script>
 </body>
 </html>
